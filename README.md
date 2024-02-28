@@ -68,3 +68,9 @@ Add the following to your cargo.toml
 [dependencies]
 complewise_iter = { git = "https://github.com/CraigBuilds/complewise_iter" }
 ```
+
+### Comparison to windows_mut
+
+https://docs.rs/lending-iterator/0.1.7/lending_iterator/index.html#examples
+
+window_mut yields sub-lists that move step-by-step over the parent list. complewise_iter can be seen as a variant where the window size is the entire list but the focus shifts.
