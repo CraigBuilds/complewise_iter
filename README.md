@@ -24,7 +24,8 @@ fn main() {
 ```rust
 use complewise_iter::IntoComplewiseIterator;
 
-/// Progressively add the sum of the complement set to each element.
+/// Calculate the new value of each element in the list by adding the sum of the other elements to it,
+/// updating the list in-place with each step so that each calculation uses the most recently updated values.
 fn main() {
     let mut items = vec![1, 2, 3, 4, 5];
     items.complewise().for_each(|item, complement| {
