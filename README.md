@@ -7,9 +7,6 @@ use complewise_iter::IntoComplewiseIterator;
 
 /// Print each element and the complement set of that element.
 fn main() {
-use complewise_iter::IntoComplewiseIterator;
-
-fn main() {
     let mut items = vec![1, 2, 3, 4, 5];
 
     items.complewise().for_each(|item, complement| {
@@ -23,7 +20,6 @@ fn main() {
     // 3 [1, 2, 4, 5]
     // 4 [1, 2, 3, 5]
     // 5 [1, 2, 3, 4]
-}
 ```
 
 ### Use Cases
