@@ -67,3 +67,16 @@ impl<'a, T> IntoComplewiseIterator<'a, T> for &'a mut [T] {
         }
     }
 }
+
+
+///workaround until I can used the lending iterator version of for_each
+impl<'a, T> ComplewiseIterator<'a, T> {
+    pub fn for_each<F>(&mut self, mut f: F)
+    where
+        F: FnMut(&mut T, Chain<Iter<T>, Iter<T>>),
+    {
+        while let Some((current, rest)) = self.next() {
+            f(current, rest);
+        }
+    }
+}
