@@ -8,7 +8,6 @@ use complewise_iter::IntoComplewiseIterator;
 /// Print each element and the complement set of that element.
 fn main() {
     let mut items = vec![1, 2, 3, 4, 5];
-
     items.complewise().for_each(|item, complement| {
         println!("Item: {}, Complement: {:?}", item, complement.collect::<Vec<_>>());
     });
@@ -20,6 +19,20 @@ fn main() {
 // 3 [1, 2, 4, 5]
 // 4 [1, 2, 3, 5]
 // 5 [1, 2, 3, 4]
+```
+
+```rust
+use complewise_iter::IntoComplewiseIterator;
+
+/// Progressively add the sum of the complement set to each element.
+fn main() {
+    let mut items = vec![1, 2, 3, 4, 5];
+    items.complewise().for_each(|item, complement| {
+        *item += complement.into_iter().sum::<i32>();
+    });
+}
+// Result:
+[15, 29, 56, 109, 214] (1+2+3+4+5, 2+15+3+4+5, 3+15+29+4+5, ...)
 ```
 
 ### Use Cases
