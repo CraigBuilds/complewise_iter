@@ -59,3 +59,11 @@ A simple test compared the performance of this iterator to a manual c style nest
 test_complewise_iter    time:   [125.52 ps 127.14 ps 129.00 ps]
 test_c_style            time:   [122.56 ps 123.17 ps 123.81 ps]
 ```
+
+### Install
+
+Add the following to your cargo.toml
+```
+[dependencies]
+complewise_iter = { git = "https://github.com/CraigBuilds/complewise_iter" }
+```
