@@ -3,15 +3,20 @@ The ComplewiseIter crate provides a custom iterator designed to facilitate mutab
 
 # Example
 ```rust
-use complewise_iter::{IntoComplewiseIterator, LendingIterator};
+use complewise_iter::IntoComplewiseIterator;
 
 /// Print each element and the complement set of that element.
 fn main() {
+use complewise_iter::IntoComplewiseIterator;
+
+fn main() {
     let mut items = vec![1, 2, 3, 4, 5];
-    let mut iter = items.complewise();
-    while let Some((item, others)) = iter.next() {
-        println!("{} {:?}", item, others.collect::<Vec<_>>());
-    }
+
+    items.complewise().for_each(|item, complement| {
+        println!("Item: {}, Complement: {:?}", item, complement.collect::<Vec<_>>());
+    });
+
+}
     // Output:
     // 1 [2, 3, 4, 5]
     // 2 [1, 3, 4, 5]
@@ -35,7 +40,7 @@ The iterator yields a mutable reference to the current element and an immutable 
 # Lending Iterator
 The ComplewiseIter implements the LendingIterator trait from the [gat-lending-iterator](https://github.com/Crazytieguy/gat-lending-iterator/) crate. It cannot implement the standard Iterator trait because it would require the lifetime of the mutable reference to be tied to the lifetime of the iterator, which is not possible without GATs, which were not implemented when then standard Iterator trait was designed.
 
-The LendingIterator trait does not allow the syntax sugar of for loops, so must be used with the `next` method.
+The LendingIterator trait does not allow the syntax sugar of for loops, so it must be used with for_each or the manual `next` method.
 
 Thanks to adapters provided by the gat-lending-iterator crate, most Iterator methods should work on a LendingIterator. However, due to issues I have not been able to create an example of this yet.
 
