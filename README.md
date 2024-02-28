@@ -1,6 +1,26 @@
 # ComplewiseIter
 The ComplewiseIter crate provides a custom iterator designed to facilitate mutable access to the current element in a collection while simultaneously providing an immutable view of the remaining elements (the complement set). This iterator is particularly useful in scenarios where an element needs to be modified in the context of the rest of the collection.
 
+# Example
+```rust
+use complewise_iter::{IntoComplewiseIterator, LendingIterator};
+
+/// Print each element and the complement set of that element.
+fn main() {
+    let mut items = vec![1, 2, 3, 4, 5];
+    let mut iter = items.complewise();
+    while let Some((item, others)) = iter.next() {
+        println!("{} {:?}", item, others.collect::<Vec<_>>());
+    }
+    // Output:
+    // 1 [2, 3, 4, 5]
+    // 2 [1, 3, 4, 5]
+    // 3 [1, 2, 4, 5]
+    // 4 [1, 2, 3, 5]
+    // 5 [1, 2, 3, 4]
+}
+```
+
 # Use Cases
 The ComplewiseIterator is versatile and can be applied in various scenarios, including:
 
