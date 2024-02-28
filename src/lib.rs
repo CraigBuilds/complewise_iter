@@ -69,7 +69,7 @@ impl<'a, T> IntoComplewiseIterator<'a, T> for &'a mut [T] {
 }
 
 
-///workaround until I can used the lending iterator version of for_each
+///workaround until I can use the LendingIterator version of for_each
 impl<'a, T> ComplewiseIterator<'a, T> {
     pub fn for_each<F>(&mut self, mut f: F)
     where
