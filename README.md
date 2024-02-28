@@ -1,5 +1,5 @@
-# ComplewiseIter
-The ComplewiseIter crate provides a custom iterator designed to facilitate mutable access to the current element in a collection while simultaneously providing an immutable view of the remaining elements (the complement set). This iterator is particularly useful in scenarios where an element needs to be modified in the context of the rest of the collection.
+# complewise_iter
+The complewise_iter crate provides a custom iterator designed to facilitate mutable access to the current element in a collection while simultaneously providing an immutable view of the remaining elements (the complement set). This iterator is particularly useful in scenarios where an element needs to be modified in the context of the rest of the collection.
 
 ### Example
 ```rust
